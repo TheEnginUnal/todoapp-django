@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block content %} 
+<div >  <h2 class="text-center my-3 pb-3" >To Do App</h2>
+<h3 class="text-center my-3 pb-3" > Welcome {{ user.username }} !</h3>
+</div>
+
+
+
+<section class="vh-70" style="background-color: #eee;">
+  <div class="container py-5 h-70"> 
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-lg-9 col-xl-7">
+        <div class="card rounded-3"> 
+          <div class="card-body p-4">   
+          <form method = "POST">       
+           <h4 class="text-center my-3 pb-3"> Add new List</h4>
+            
+          <input type="text" id="newlistname" name="newListName" class="form-control " />
+          <label class="form-label" for="form1">Enter a list name here</label> 
+          <br>
+          <button type="submit" name="addList" value="{{list.listid}}" class="btn btn-primary">Add List</button>
+        </div>
+      </form> 
+          </div>  
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% for list in lists %}
+
+<section class="vh-70" style="background-color: #eee;">
+  <div class="container py-5 h-70"> 
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-lg-9 col-xl-7">
+        <div class="card rounded-3"> 
+          <div class="card-body p-4">          
+           <h4 class="text-center my-3 pb-3"></h4>
+
+            <form class="row row-cols-lg-auto g-3 justify-content-center align-items-center mb-4 pb-2" method = "POST" >
+              <div class="col-12">
+                <div class="form-outline">
+                  <row > <button type="submit" name="deleteList" value="{{list.listid}}" class="btn btn-danger valu">Delete List</button>
+                    <h3 class="text-center my-2 pb-3" >  {{ list.name }} </h3> 
+                    <p> Comp : % {{list.complie}} </p>
+                    
+                  </row> 
+                  <input type="text" id="content" name="content" class="form-control " />
+                  <label class="form-label" for="form1">Enter a task here</label>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <button type="submit" name="addTask" value="{{list.listid}}" class="btn btn-primary">Add Task</button>
+              </div>
+
+              
+            </form>
+            <form method = "POST">
+            <table class="table mb-4">
+              <thead>
+                <tr>
+                  
+                 
+                  <th scope="col">Todo item</th>
+                 
+                  <th scope="col">Status</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in list.items  %}
+
+                <tr>
+                  
+                  
+                  <td>{{item.content}}</td>
+                  
+                  <td>In progress</td>
+                  <td>
+                   
+                    <button id="finished" name="finished" value="{{item.id}}" type="submit" class="btn btn-success ms-1">Finished</button>
+                  </td>
+                </tr>
+            
+                       
+              </tbody> 
+              
+              {% endfor %}
+            </table> </form>
+          </div>  
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endfor %}
+  {% endblock content %}
