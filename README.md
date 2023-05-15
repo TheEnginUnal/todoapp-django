@@ -7,7 +7,8 @@ superkullanıcı; admin-12345
 normal kullanıcı; engin-engin12345
 
 Siteye ilk giriş login sayfası bu şekilde ; 
-![login](https://github.com/TheEnginUnal/todoapp/assets/101329489/629c7a23-d29a-40a4-b825-9b1b477de2a8)
+
+![login](https://github.com/TheEnginUnal/todoapp-django/assets/101329489/e49551ee-1ac1-4232-b30e-68b8703247fc)
 
 Normal kullanıcı ile giriş sağlandığında eğer kullanıcıya ait bir list yoksa sadece addlist alanı geliyor, eğer var ise hem addlist alanı ve beraberinde kullanıcıya ait liste ve içerisindeki itemler geliyor
 ![addlist](https://github.com/TheEnginUnal/todoapp/assets/101329489/6bdd954e-b5e5-4adc-b894-36441d9f966e)
