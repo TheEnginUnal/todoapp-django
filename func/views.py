@@ -58,6 +58,21 @@ def list(request):
                 return render(request, "superlist.html",
                             {'superlists': superlists}
                             )
+            if 'addTask' in request.POST:
+                listid = request.POST["addTask"]
+                content = request.POST["content"]
+                newitem = ToDoList.objects.get(pk = listid)
+                ToDoItem.objects.create(userid=request.user,listid = newitem , content = content)
+
+                return render(request, "superlist.html")
+            if 'deleteList' in request.POST:
+                listid = request.POST["deleteList"]
+                deletionList = ToDoList.objects.get(pk = listid)
+                deletionList.delete()
+                return render(request, "superlist.html")
+            
+                
+           
             
 
             
@@ -97,7 +112,7 @@ def list(request):
 # Kullanıcıya ait list ve itemleri getiren fonksiyon 
 def getList(request):
     if request.user is not None:
-        list = ToDoList.objects.filter(userid = request.user)
+        list = ToDoList.objects.filter(userid = request.user.id)
         lists = []
         for l in list:
             items = ToDoItem.objects.filter(listid= l,deletionDate = None)
